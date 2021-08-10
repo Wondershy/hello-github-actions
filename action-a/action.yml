@@ -2,19 +2,6 @@ name: "Hello Actions"
 description: "Greet someone"
 author: "octocat@github.com"
 
-inputs:
-  HOST:
-    description: "Host of the VPS"
-    required: true
- 
-  USERNAME:
-    description: "Username of VPS user"
-    required: true
- 
-  COMMAND:
-    description: "Command to exec in the VPS"
-    required: true
-
 runs:
   using: "docker"
   image: "Dockerfile"
