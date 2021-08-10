@@ -3,10 +3,17 @@ description: "Greet someone"
 author: "octocat@github.com"
 
 inputs:
-  MY_NAME:
-    description: "Who to greet"
+  HOST:
+    description: "Host of the VPS"
     required: true
-    default: "World"
+ 
+  USERNAME:
+    description: "Username of VPS user"
+    required: true
+ 
+  COMMAND:
+    description: "Command to exec in the VPS"
+    required: true
 
 runs:
   using: "docker"
