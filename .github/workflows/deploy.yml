@@ -15,15 +15,14 @@ jobs:
             HostName $HOST
             User $USERNAME
             IdentityFile ~/.ssh/staging.key
-            StrictHostKeyChecking no
           END
         env:
           SSH_USER: ${{ secrets.USERNAME }}
           SSH_KEY: ${{ secrets.PRIVATE_KEY }}
           SSH_HOST: ${{ secrets.HOST }}
 
-      - name: Stop the server
+      - name: Say Hello
         run: echo 'Hello'
 
-      - name: Check out the source
+      - name: Say World!
         run: echo 'World!'
