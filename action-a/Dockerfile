@@ -1,5 +1,11 @@
-FROM debian:9.5-slim
+FROM alpine:3.14
 
-ADD entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+ENV USERNAME=
+ENV HOST=
+ENV COMMAND="echo Hello World"
+
+RUN apk add --no-cache openssh
+
+COPY entrypoint.sh .
+
+ENTRYPOINT ["./entrypoint.sh"]
