@@ -8,13 +8,13 @@ jobs:
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh/
-          echo "$SSH_KEY" > ~/.ssh/staging.key
-          chmod 600 ~/.ssh/staging.key
+          echo "$SSH_KEY" > ~/.ssh/prod.key
+          chmod 600 ~/.ssh/prod.key
           cat >>~/.ssh/config <<END
           Host prod
             HostName $HOST
             User $USERNAME
-            IdentityFile ~/.ssh/staging.key
+            IdentityFile ~/.ssh/prod.key
           END
         env:
           SSH_USER: ${{ secrets.USERNAME }}
@@ -22,7 +22,7 @@ jobs:
           SSH_HOST: ${{ secrets.HOST }}
 
       - name: Say Hello
-        run: echo 'Hello'
+        run: ssh prod "echo 'Hello'"
 
       - name: Say World!
-        run: echo 'World!'
+        run: ssh prod "echo 'World!'"
