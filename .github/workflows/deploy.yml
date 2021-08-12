@@ -4,7 +4,6 @@ jobs:
   deploy:
     name: "Deploy to production"
     runs-on: ubuntu-latest
-    environment: "VPS deployment"
     steps:
       - name: Configure SSH
         run: |
@@ -18,9 +17,9 @@ jobs:
             IdentityFile ~/.ssh/prod.key
           END
         env:
-          SSH_USER: ${{ secrets.USERNAME }}
-          SSH_KEY: ${{ secrets.PRIVATE_KEY }}
-          SSH_HOST: ${{ secrets.HOST }}
+          SSH_USER: ${{ secrets.PROD_USERNAME }}
+          SSH_KEY: ${{ secrets.PROD_PRIVATE_KEY }}
+          SSH_HOST: ${{ secrets.PROD_HOST }}
 
       - name: Say Hello
         run: ssh prod "echo 'Hello'"
