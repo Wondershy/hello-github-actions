@@ -12,8 +12,8 @@ jobs:
           chmod 600 ~/.ssh/prod.key
           cat >>~/.ssh/config <<END
           Host prod
-            HostName $HOST
-            User $USERNAME
+            HostName $SSH_HOST
+            User $SSH_USER
             IdentityFile ~/.ssh/prod.key
           END
         env:
