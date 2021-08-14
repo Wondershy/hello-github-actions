@@ -16,10 +16,12 @@ jobs:
             User $SSH_USER
             IdentityFile ~/.ssh/prod.key
           END
+          echo $SSH_KNOWN_HOST >> ~/.ssh/known_hosts
         env:
           SSH_USER: ${{ secrets.PROD_USERNAME }}
           SSH_KEY: ${{ secrets.PROD_PRIVATE_KEY }}
           SSH_HOST: ${{ secrets.PROD_HOST }}
+          SSH_KNOWN_HOST: ${{ secrets.PROD_KNOWN_HOST }}
 
       - name: Say Hello
         run: ssh prod "echo 'Hello'"
